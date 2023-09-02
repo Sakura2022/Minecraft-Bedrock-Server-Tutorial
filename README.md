@@ -1,15 +1,14 @@
 # Minecraft Bedrock Server Tutorial
 Minecraft Bedrock Edition server setup (Ubuntu Server)
- 这篇文章将从零开始讲述搭建《我的世界-基岩版》服务器的过程及所有细节。我一贯认为，只有自己拥有的服务器，才是可靠的服务器。所以我便花了几天时间捣鼓了一下这个东西，写这篇文章的主要目的也算是一个备忘录，防止自己忘记。在开始前，我需要强调一下，这个基岩版服务端只支持X86/X64架构的CPU，并不支持ARM架构。换句话来说，这个服务端不能架设在树莓派上。以下是本文的目录
+My orignal article was published on BiliBili. Link: https://www.bilibili.com/read/cv25659542
 
-选择服务器
+ This article will start from scratch to explain the process and all the details of setting up a "Minecraft Bedrock Edition" server. I have always believed that only a server you own is a reliable server. So, I spent a few days tinkering with this, and the main purpose of writing this article is also a memo to prevent myself from forgetting. Before we begin, I need to emphasize that this Bedrock Edition server only supports X86/X64 architecture CPUs and does not support ARM architecture. In other words, this server cannot be hosted on a Raspberry Pi. Below is the table of contents for this article.
 
-安装基岩版服务端
+*Choose a Server
+*Installing the Bedrock Edition Server
+*Bedrock Edition Server Configuration
+*Setting up Scheduled Backups
+*Setting up Scheduled Shutdowns and Backups
+*Commands and Usage
 
-基岩版服务器设置
 
-设置定时备份
-
-设置定时关机+备份
-
-指令及用法 作者：花樱茉莉 https://www.bilibili.com/read/cv25659542/?spm_id_from=333.999.0.0 出处：bilibili
