@@ -17,7 +17,7 @@ This article will start from scratch to explain the process and all the details 
 
 *Commands and Usage
 
-# Select a Server
+## Select a Server
 
 There are a lot of available options on selecting a server, and here are some suggestions. Firstly, the server's hardware configuration determines both the number of simultaneous online players and the loading speed of maps. When I talk about hardware configuration, I am referring to the number of CPU cores, the amount of memory, and the server's bandwidth. Of course, the higher the configuration, the better it would be (haha, if you have the budget ^_^). However, through testing, it has been found that 1 core with 1GB of memory (1 core 1GB) can also provide a smooth gaming experience, although there is a chance of running out of memory. In cases with limited memory, it is strongly recommended to schedule regular server restarts, as this effectively clears the memory.
 
@@ -37,14 +37,19 @@ Oracle provides free servers, but they are difficult to obtain. Errors often occ
 
 The region you choose during registration is the region of the server. Free accounts cannot simultaneously open servers in multiple regions. If registration is successful, having this account is quite valuable. You can simultaneously use two 1-core 1GB RAM AMD servers (bandwidth: 480Mbps) and one 4-core 24GB RAM ARM server (bandwidth: 2Gbps) or two 2-core 12GB ARM servers (bandwidth: 1Gbps). I chose the Osaka region in Japan, and perhaps because it's so popular, there was no inventory for ARM servers. However, two AMD servers are already very comfortable. For such servers, Linux becomes the primary choice, as Windows Server not only consumes performance but is also a paid service.
 
-# Installing the Bedrock Edition Server
+## Installing the Bedrock Edition Server
 
 OS: Ubuntu Server 22.04.2 LTS
 
 1. Open the server through the server provider and install the Ubuntu system. Save the private key. (release port 22)
-
 2. Install Tabby on the computer, which is an open source terminal. It can be downloaded on GitHub.
-
 3. Connect to the server through SSH. Check the user name according to the server background, usually ubuntu.
 4. Wait for the connection to be successful and the preparations are complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes)
+5. Get administrator privileges.
+  1. #0969DA sudo passwd root
+  2. su root
+
+
+
+
 
