@@ -46,10 +46,10 @@ OS: Ubuntu Server 22.04.2 LTS
 3. Connect to the server through SSH. Check the user name according to the server background, usually ubuntu.
 4. Wait for the connection to be successful and the preparations are complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes)
 5. Get administrator privileges.
-  ```
-  sudo passwd root
-  su root
-  ```
+   ```
+   sudo passwd root
+   su root
+   ```
 6. Update package list
    ```
    sudo apt-get update
@@ -70,12 +70,24 @@ OS: Ubuntu Server 22.04.2 LTS
    ```
    (Not necessary)
 9. Install the server-side network communication dependency library
-    ```
-    apt-get install libcurl4-openssl-dev
-    ```
-    Important and indispensable! !
+   ```
+   apt-get install libcurl4-openssl-dev
+   ```
+   (Important and indispensable! !)
 10. Create a new server folder
-   
+    ```
+    cd /home
+    mkdir minecraft
+    cd ./minecraft
+    ```
+    (open home folder,Create a new folder named minecraft,open the minecraft folder)
+11. Download the Bedrock Edition server ```wget link``` link from the official website as follows
+12. unzip file ```unzip filename``` Check the file name through ```ls```, or directly press TAB to complete it automatically.
+13. To delete the compressed package, use this command ```rm ./filename```
+14. Prevent my world server from being shut down after closing the ssh connection. Create a new virtual window named minecraft ```screen -S minecraft```. case matters
+15. Run the game ```LD_LIBRARY_PATH=. ./bedrock_server``` Make sure you are in the correct server directory when running this command.
+16. If you cannot connect to the server, remember to check whether the server operator background management interface has released the 19132 udp port. Or it was blocked by the system firewall (generally speaking, the new system does not have a firewall by default). For details, please refer to the following instructions and usage.
+17. CTRL-C closes the server
    
    
 
