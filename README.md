@@ -44,12 +44,15 @@ OS: Ubuntu Server 22.04.2 LTS
 1. Open the server through the server provider and install the Ubuntu system. Save the private key. (release port 22)
 2. Install Tabby on the computer, which is an open source terminal. It can be downloaded on GitHub.
 3. Connect to the server through SSH. Check the user name according to the server background, usually ubuntu.
+   ![Image text](https://i0.hdslb.com/bfs/article/8db1d7c915e742c223216eecf6c573b41d7cc65f.png@1256w_934h_!web-article-pic.webp)
 4. Wait for the connection to be successful and the preparations are complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes)
+   ![Image text](https://i0.hdslb.com/bfs/article/68c3a650d420de412184bede26a0edf6f5b4e289.png@1256w_1344h_!web-article-pic.webp)
 5. Get administrator privileges.
    ```
    sudo passwd root
    su root
    ```
+   ![Image text](https://i0.hdslb.com/bfs/article/16aa9db060eaf575dc79f0b6e723328d497fe698.png@!web-article-pic.webp)
 6. Update package list
    ```
    sudo apt-get update
@@ -82,12 +85,18 @@ OS: Ubuntu Server 22.04.2 LTS
     ```
     (open home folder,Create a new folder named minecraft,open the minecraft folder)
 11. Download the Bedrock Edition server ```wget link``` link from the official website as follows
+    ![Image text](https://i0.hdslb.com/bfs/article/716ce17e27d827dce933f35a6ef46b98090a6e3b.png@1256w_1076h_!web-article-pic.webp)
 12. unzip file ```unzip filename``` Check the file name through ```ls```, or directly press TAB to complete it automatically.
+    ![Image text](https://i0.hdslb.com/bfs/article/02f7e0c7e6e88173891c66d1e11304a632b84f8b.png@!web-article-pic.webp)
 13. To delete the compressed package, use this command ```rm ./filename```
 14. Prevent my world server from being shut down after closing the ssh connection. Create a new virtual window named minecraft ```screen -S minecraft```. case matters
 15. Run the game ```LD_LIBRARY_PATH=. ./bedrock_server``` Make sure you are in the correct server directory when running this command.
+    ![Image text](https://i0.hdslb.com/bfs/article/09dcb8bc7352c409c6bb0acf96273a581a7f6e6e.png@1256w_692h_!web-article-pic.webp)
 16. If you cannot connect to the server, remember to check whether the server operator background management interface has released the 19132 udp port. Or it was blocked by the system firewall (generally speaking, the new system does not have a firewall by default). For details, please refer to the following instructions and usage.
 17. CTRL-C closes the server
+
+## Bedrock Edition Server Configuration
+
    
    
 
