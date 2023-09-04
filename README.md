@@ -3,7 +3,7 @@ Minecraft Bedrock Edition server setup (Ubuntu Server)
 
 My orignal article was published on BiliBili. Link: https://www.bilibili.com/read/cv25659542
 
-This article will start from scratch to explain the process and all the details of setting up a "Minecraft Bedrock Edition" server. I have always believed that only a server you own is a reliable server. So, I spent a few days tinkering with this, and the main purpose of writing this article is also a memo to prevent myself from forgetting. Before I begin, I need to emphasize that this Bedrock Edition server only supports X86/X64 architecture CPUs and does not support ARM architecture. In other words, this server cannot be hosted on a Raspberry Pi. Below is the table of contents for this article.
+This article will start from scratch to explain the process and all the details of setting up a "Minecraft Bedrock Edition" server. I have always believed that only a server you own is a reliable server. So, I spent a few days tinkering with this, and the main purpose of writing this article is also a memo to prevent myself from forgetting. Before I begin, I need to emphasize that this Bedrock Edition server only supports X86/X64 architecture CPUs and does **not support ARM architecture**. In other words, this server cannot be hosted on a Raspberry Pi. Below is the table of contents for this article.
 
 *Select a Server
 
@@ -29,11 +29,11 @@ Now, let's talk about network issues. Home networks are usually part of a local 
 
 ![Image text](https://i0.hdslb.com/bfs/article/5c21da8ec79cace90b66d3749acc6cbef06f3594.png@1256w_892h_!web-article-pic.webp)
 
-Here are several options to choose from. If only a few ports need to be forwarded, use the first rule. For example, in the case of Minecraft Bedrock Edition, it uses UDP protocol on port 19132, so mapping this port is sufficient. You can search for your current public IP address on Baidu. Actually, dynamic IPs don't change too frequently.
+Here are several options to choose from. If only a few ports need to be forwarded, use the first rule. For example, in the case of Minecraft Bedrock Edition, it uses UDP protocol on port 19132, so mapping this port is sufficient. You can search for your current public IP address on Google. Actually, dynamic IPs won't change that frequently.
 
-The scope of renting a server is even broader. First, you need to consider whether to choose a domestic server or an overseas server. The advantage of domestic servers is their proximity, resulting in lower latency. However, the disadvantages are quite evident; domestic servers are very expensive compared to foreign servers with similar specifications, and there's the issue of bandwidth. The bandwidth of a domestic 1Mbps server is simply unbelievable. Foreign servers often have higher latency, but they have many other advantages. Firstly, they are cheaper, and they offer abundant bandwidth options, such as 500Mbps, 1Gbps, and 2Gbps, which are quite common. Server providers you might encounter usually include Tencent Cloud, Alibaba Cloud, Oracle, Amazon Web Services, and others.
+The scope of renting a server is even broader. First, you need to consider whether to choose a domestic server (China) or an overseas server. The advantage of domestic servers is their proximity, resulting in lower latency (for China user). However, the disadvantages are quite evident; domestic servers are very expensive compared to foreign servers with similar specifications, and there's the issue of bandwidth. The bandwidth of a domestic 1Mbps server is simply unbelievable. Foreign servers often have higher latency, but they have many other advantages. Firstly, they are cheaper, and they offer abundant bandwidth options, such as 500Mbps, 1Gbps, and 2Gbps, which are quite common. Server providers you might encounter usually include Tencent Cloud, Alibaba Cloud, Oracle, Amazon Web Services, and so on.
 
-Oracle provides free servers, but they are difficult to obtain. Errors often occur after the credit card verification is completed in the final step. My advice is to use genuine information, avoid using proxies, and make sure the address you provide matches your credit card address and IP. Also, it seems that due to aggressive actions in China, it's very difficult to get an account with a domestic card. I failed several times, and finally succeeded with an American credit card. So, I recommend that people overseas give it a try.
+Oracle provides free servers, but they are difficult to obtain. Errors often occur after the credit card verification is completed in the final step. My advice is to use genuine information, avoid using proxies, and make sure the address you provide matches your credit card address and IP. Also, it seems that due to the amount of people in China, it's very difficult to get an account with a Chinese Credit card. I failed several times, but finally succeeded with an American credit card. So, I recommend that people overseas give it a try.
 
 The region you choose during registration is the region of the server. Free accounts cannot simultaneously open servers in multiple regions. If registration is successful, having this account is quite valuable. You can simultaneously use two 1-core 1GB RAM AMD servers (bandwidth: 480Mbps) and one 4-core 24GB RAM ARM server (bandwidth: 2Gbps) or two 2-core 12GB ARM servers (bandwidth: 1Gbps). I chose the Osaka region in Japan, and perhaps because it's so popular, there was no inventory for ARM servers. However, two AMD servers are already very comfortable. For such servers, Linux becomes the primary choice, as Windows Server not only consumes performance but is also a paid service.
 
@@ -41,11 +41,11 @@ The region you choose during registration is the region of the server. Free acco
 
 OS: Ubuntu Server 22.04.2 LTS
 
-1. Open the server through the server provider and install the Ubuntu system. Save the private key. (release port 22)
+1. Setup a server through the server provider and install the Ubuntu system. Save the private key. (release port 22)
 2. Install Tabby on the computer, which is an open source terminal. It can be downloaded on GitHub.
-3. Connect to the server through SSH. Check the user name according to the server background, usually ubuntu.
+3. Connect to the server through SSH. Check the user name according to the server background panel, usually 'ubuntu'.
    ![Image text](https://i0.hdslb.com/bfs/article/8db1d7c915e742c223216eecf6c573b41d7cc65f.png@1256w_934h_!web-article-pic.webp)
-4. Wait for the connection to be successful and the preparations are complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes)
+4. Wait for the connection to be successful and the preparations to be complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes only)
    ![Image text](https://i0.hdslb.com/bfs/article/68c3a650d420de412184bede26a0edf6f5b4e289.png@1256w_1344h_!web-article-pic.webp)
 5. Get administrator privileges.
    ```
@@ -61,13 +61,13 @@ OS: Ubuntu Server 22.04.2 LTS
    ```
    apt-get install zip
    ```
-   (In this version system, zip and unzip will be installed at the same time)
+   (In this system version , zip and unzip will be installed at the same time)
 
    ```
    apt-get install unzip
    ```
-   (This is not necessary in this version of the system)
-8. This version system comes with screen (software that keeps the program running after ssh is closed), no additional installation is required.
+   (This is not necessary in this system version)
+8. This system version comes with screen (software that keeps the program running after ssh is closed), no additional installation is required.
    ```
    apt-get install screen
    ```
@@ -89,10 +89,10 @@ OS: Ubuntu Server 22.04.2 LTS
 12. unzip file ```unzip filename``` Check the file name through ```ls```, or directly press TAB to complete it automatically.
     ![Image text](https://i0.hdslb.com/bfs/article/02f7e0c7e6e88173891c66d1e11304a632b84f8b.png@!web-article-pic.webp)
 13. To delete the compressed package, use this command ```rm ./filename```
-14. Prevent my world server from being shut down after closing the ssh connection. Create a new virtual window named minecraft ```screen -S minecraft```. case matters
+14. Prevent Minecraft server from being shut down after closing the ssh connection. Create a new virtual window named minecraft ```screen -S minecraft```. case matters
 15. Run the game ```LD_LIBRARY_PATH=. ./bedrock_server``` Make sure you are in the correct server directory when running this command.
     ![Image text](https://i0.hdslb.com/bfs/article/09dcb8bc7352c409c6bb0acf96273a581a7f6e6e.png@1256w_692h_!web-article-pic.webp)
-16. If you cannot connect to the server, remember to check whether the server operator background management interface has released the 19132 udp port. Or it was blocked by the system firewall (generally speaking, the new system does not have a firewall by default). For details, please refer to the following instructions and usage.
+16. If you cannot connect to the server, remember to check whether the server operator background management interface has released the 19132 udp port. Or it was blocked by the system firewall (generally speaking, the new system does not have a firewall by default). For details, please refer to the Commands and Usage Section.
 17. CTRL-C closes the server
 
 ## Bedrock Edition Server Configuration
