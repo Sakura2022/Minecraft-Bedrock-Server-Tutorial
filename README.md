@@ -50,6 +50,34 @@ OS: Ubuntu Server 22.04.2 LTS
   sudo passwd root
   su root
   ```
+6. Update package list
+   ```
+   sudo apt-get update
+   ```
+7. Install compression and decompression software
+   ```
+   apt-get install zip
+   ```
+   (In this version system, zip and unzip will be installed at the same time)
+
+   ```
+   apt-get install unzip
+   ```
+   (This is not necessary in this version of the system)
+8. This version system comes with screen (software that keeps the program running after ssh is closed), no additional installation is required.
+   ```
+   apt-get install screen
+   ```
+   (Not necessary)
+9. Install the server-side network communication dependency library
+    ```
+    apt-get install libcurl4-openssl-dev
+    ```
+    Important and indispensable! !
+10. Create a new server folder
+   
+   
+   
 
 
 
