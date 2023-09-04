@@ -168,6 +168,159 @@ exit
 
 ## Setting up Scheduled Shutdowns and Backups
 
+In cases where server memory is insufficient, scheduled shutdowns are essential. This is because shutting down the server involves a restart of the Bedrock server, which is necessary. The solution I have in mind is to schedule server shutdowns and, after the restart, automatically run a script to perform backups and start the server. These following steps continue from where "Bedrock Edition Server Configuration" left off:
+
+1. Rebooting the system ```sudo reboot```
+2. Switching to the root user ```su root```
+3. Opening the server folder ```cd /home/minecraft```
+4. Creating a new script file with .sh extension ```vim autorun.sh```
+5. Paste the script
+```
+mkdir -p /home/minecraft/backup
+
+find /home/minecraft/backup -mtime +14 -type f -name "*.zip" -exec rm -rf {} \;
+
+sleep 2
+
+mkdir -p /home/minecraft/backup/temp
+
+echo 'mkdir done'
+
+mkdir -p /home/minecraft/backup/temp/mcserver
+
+cp -r /home/minecraft/worlds/* /home/minecraft/backup/temp/mcserver
+
+sleep 2
+
+echo 'copy done'
+
+zip -q -r /home/minecraft/backup/mcserver$(date +%Y%m%d).zip /home/minecraft/backup/temp/mcserver
+
+echo 'zip done'
+
+sleep 2
+
+rm -rf /home/minecraft/backup/temp
+
+echo 'backup finished'
 
 
+
+sleep 2
+
+screen -dmS minecraft
+
+sleep 2
+
+screen -x -S minecraft -p 0 -X stuff "cd /home/minecraft"
+
+screen -x -S minecraft -p 0 -X stuff '\n'
+
+screen -x -S minecraft -p 0 -X stuff "sudo LD_LIBRARY_PATH=. ./bedrock_server"
+
+screen -x -S minecraft -p 0 -X stuff '\n'
+
+echo 'server opened'
+
+echo 'all done'
+
+exit 0
+```
+
+6. Set the format to Unix, or you may encounter errors later. ```:set fileformat=unix```
+7. Save and exit ```:wq```
+8. Give execute permissions to the script ```chmod +x autorun.sh```
+9. Test it ```./autorun.sh```
+10. If backup files are created and the server is started, it's considered a success. You can verify if it has indeed succeeded by using the ```top``` command.
+11. Set up a scheduled shutdown - Open the script ```crontab -e```
+12. Enter the following code to schedule a shutdown at 3 AM and to run the script upon startup.
+
+![Image text](https://i0.hdslb.com/bfs/article/6c59b82e43af3e9adc2e64ea2c65c082420b8c84.png@1256w_244h_!web-article-pic.webp)
+
+13. Press F2, then Y to save, and Enter to exit.
+14. Shut down and restart the system to verify if the script automatically executes. (Without SSH intervention, attempt to connect to the server using your phone or computer with Minecraft to verify if the server has started.)
+
+## Commands and Usage
+
+Here's a brief introduction to some commonly used commands and shortcuts:
+
+### Tabby Terminal Tips:
+
+1. Use the arrow keys to automatically fill in previously entered commands.
+2. Right-click to paste.
+3. In the top-right corner, SFTP can be used to view the folder structure.
+
+### Ubuntu Server Commands and Tips:
+
+1. Ctrl+C: Terminate the current program.
+2. Ctrl+Z: Hide the current program.
+3. ```sudo passwd root``` Set the root account password.
+4. ```su root``` Switch to the root user.
+5. ```su ubuntu``` Switch to the user named "ubuntu."
+6. ```top``` Display running processes (you can exit using tip 1).
+7. ```kill <pid>``` Terminate a process.
+8. ```sudo ufw enable``` Enable the firewall.
+9. ```sudo ufw reload``` Reload the firewall rules.
+10. ```sudo ufw status``` Check the firewall status.
+11. ```sudo ufw disable``` Disable the firewall.
+12. ```sudo ufw allow 22``` Allow port 22.
+13. ```sudo ufw allow 22/tcp``` Allow port 22 with TCP protocol.
+14. ```sudo ufw delete allow 22``` Remove the rule for port 22.
+15. ```sudo reboot``` Reboot the system.
+16. ```cd ..``` Navigate up one directory.
+17. ```cd /home``` Open the "/home" directory with an absolute path.
+18. ```cd ./ubuntu``` Open the "ubuntu" directory with a relative path.
+19. ```rm <path>``` Delete a file.
+20. ```rm -rf <path>``` Delete a folder and its contents.
+21. ```mkdir <path>``` Create a new folder.
+22. ```touch <filename>``` Create a new file.
+23. vim <filename>``` Open or create and edit a file.
+24. ```crontab -e``` Open the crontab for editing.
+25. ```crontab -l``` List crontab entries.
+26. ```crontab -r``` Remove crontab entries.
+27. Press F2 to exit the crontab editor.
+28. ```screen -S <name>``` Open a window with the specified name.
+29. ```screen -ls``` List all current windows.
+30. ```screen -r <name>``` Restore a window.
+31. Typing "exit" in a screen window will close it.
+32. ```chmod +x <filename>``` Grant execute permissions to a file, making it executable.
+33. ```cp <source> <destination>``` Copy a file.
+34. ```mv <source> <destination>``` Move a file.
+35. ```ls``` List all files in the current directory.
+
+### Vim Editor Commands:
+
+1. When just opened, copy and paste are allowed.
+2. Press "i" to enter insert mode (no copy-paste).
+3. Press "Esc" to exit insert mode.
+4. ```:wq``` Save and exit.
+5. ```:wq!``` Save and force exit.
+6. ```:q``` Exit.
+7. ```:q!``` Force exit.
+8. ```:set fileformat=unix``` Change the format, important when moving scripts from Windows to Linux.
+
+## Reference
+1. Linux 文件与目录管理 *https://www.runoob.com/linux/linux-file-content-manage.html*
+
+2. ubuntu防火墙ufw使用教程 *https://www.cnblogs.com/zqifa/p/ubuntu-ufw-1.html*
+
+3. Linux Crontab 定时任务 *https://www.runoob.com/w3cnote/linux-crontab-tasks.html*
+
+4. 一 搭建服务器 - Minecraft 基岩版服务器搭建 *https://zhuanlan.zhihu.com/p/379638625?utm_id=0*
+
+5. Ubuntu-vim 命令 *https://blog.csdn.net/weixin_45774972/article/details/121231190*
+
+6. Linux使用：screen *https://nscc.mrzhenggang.com/screen/#%E8%83%8C%E6%99%AF*
+
+7. MC-BE基岩版服务器搭建与日常维护 *https://www.cnblogs.com/xzajyjs/p/15418260.html*
+
+8. sleep: invalid time interval ‘1s\r’ *https://blog.csdn.net/taw19960426/article/details/109629004*
+
+9. Linux下设置/查看/取消定时任务 *https://blog.csdn.net/linhai1028/article/details/80261700*
+
+10. crontab用法与实例 *https://www.linuxprobe.com/how-to-crontab.html*
+
+11. Ubuntu自启动Screen并执行命令 *https://blog.csdn.net/qq_41424132/article/details/119939024*
+
+12. Linux chmod命令 *https://www.runoob.com/linux/linux-comm-chmod.html*
 
