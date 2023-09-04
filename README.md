@@ -274,7 +274,7 @@ Here's a brief introduction to some commonly used commands and shortcuts:
 20. ```rm -rf <path>``` Delete a folder and its contents.
 21. ```mkdir <path>``` Create a new folder.
 22. ```touch <filename>``` Create a new file.
-23. vim <filename>``` Open or create and edit a file.
+23. ```vim <filename>``` Open or create and edit a file.
 24. ```crontab -e``` Open the crontab for editing.
 25. ```crontab -l``` List crontab entries.
 26. ```crontab -r``` Remove crontab entries.
@@ -290,7 +290,7 @@ Here's a brief introduction to some commonly used commands and shortcuts:
 
 ### Vim Editor Commands:
 
-1. When just opened, copy and paste are allowed.
+1. When just opened the file, copy and paste are allowed.
 2. Press "i" to enter insert mode (no copy-paste).
 3. Press "Esc" to exit insert mode.
 4. ```:wq``` Save and exit.
