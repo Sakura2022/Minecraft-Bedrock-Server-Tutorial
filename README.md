@@ -97,9 +97,76 @@ OS: Ubuntu Server 22.04.2 LTS
 
 ## Bedrock Edition Server Configuration
 
-   
-   
+There are mainly three files that the can modify: allowlist.json, permissions.json, and server.properties. The first is the whitelist, which is rarely used. The second file is to give permissions, and add whatever is needed. The third is to modify the parameters of the server. You can set parameters such as seeds and server types and it is easy to find its meaning online. 
 
+![Image text](https://i0.hdslb.com/bfs/article/ee8965558b93c59910fb7e4302f88da9941c3f47.png@!web-article-pic.webp)
+
+Modifying these files requires the **vim** tool.
+
+Open the file with ```vim ./permissions.json```. When you first open it, you can copy and paste, but you cannot edit it. Press 'i' to enter edit mode and 'Esc' to exit edit mode.
+
+```:wq``` save and quit ```:q!``` do not save and force to quit
+
+## Setting up Scheduled Backups
+
+As a server, scheduled automatic backups are a crucial part of this. This backup method is suitable for servers with ample memory and doesn't involve hot backups. I referred to online tutorials and made some modifications to the script myself.
+
+1. Rebooting the system ```sudo reboot```
+2. Switching to the root user ```su root```
+3. Opening the server folder ```cd /home/minecraft```
+4. Creating a new script file with .sh extension ```vim autoBackup.sh```
+5. Paste the script
+```
+mkdir -p /home/minecraft/backup
+
+find /home/minecraft/backup -mtime +14 -type f -name "*.zip" -exec rm -rf {} \; 
+
+sleep 2
+
+mkdir -p /home/minecraft/backup/temp        
+
+echo 'mkdir done' 
+
+mkdir -p /home/minecraft/backup/temp/mcserver
+
+cp -r /home/minecraft/worlds/* /home/minecraft/backup/temp/mcserver
+
+sleep 2
+
+echo 'copy done'
+
+zip -q -r /home/minecraft/backup/mcserver$(date +%Y%m%d).zip /home/minecraft/backup/temp/mcserver
+
+echo 'zip done' 
+
+sleep 2
+
+rm -rf /home/minecraft/backup/temp
+
+echo 'all done'
+
+exit
+```
+![Image text](https://i0.hdslb.com/bfs/article/74fd57f2052823288010504f4b78a82238eaa3fc.png@1256w_598h_!web-article-pic.webp)
+
+6. Set the format to Unix, or you may encounter errors later. ```:set fileformat=unix```
+7. Save and exit ```:wq```
+8. Give execute permissions to the script ```chmod +x autoBackup.sh```
+9. Test it ```./autoBackup.sh```. You should see the following screen, then use the ```ls``` command to check if the zip file has been generated. If you're using the Tabby software I recommended, you can go to the top right corner of the software, click on SFTP, and check if the backup file has been generated."
+
+![Image text](https://i0.hdslb.com/bfs/article/c71689e0ffb45aa48a144b9b1cd1a69cdbaa8206.png@1256w_380h_!web-article-pic.webp)
+
+![Image text](https://i0.hdslb.com/bfs/article/bf38e772d6b47c49003f8b8c765e26ef529dd3f1.png@1256w_302h_!web-article-pic.webp)
+
+10. After these successful setup, it's time to configure the scheduled task.
+11. Open the cron job editor, select option 1 ```crontab -e```
+12. Enter this command to run the script at 3 AM every day.
+
+![Image text](https://i0.hdslb.com/bfs/article/e1982cb4c9b925591c7037d6edf0061f9192b8cc.png@1256w_142h_!web-article-pic.webp)
+
+13. Press F2, then Y to save, and Enter to exit.
+
+## Setting up Scheduled Shutdowns and Backups
 
 
 
