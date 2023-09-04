@@ -27,7 +27,7 @@ For home computers, you can install various types of operating systems, such as 
 
 Now, let's talk about network issues. Home networks are usually part of a local area network and generally cannot be accessed from the public internet. In this case, you need to use port forwarding to allow players on the public internet to access the server. Some people say that home networks use dynamic IP addresses (DHCP) and require various software solutions or obtaining a public IP address. Indeed, this makes sense, but I haven't researched it. In general, running a server on a home computer is usually done for experimentation and casual gaming. If you intend to run a server for an extended period, it's better to rent a dedicated server. Therefore, for this type of home server, being accessible on the public internet for a short period is sufficient. This is quite straightforward, using the port forwarding feature on your router. For example, Xiaomi routers have port forwarding capabilities.
 
-图
+!(https://i0.hdslb.com/bfs/article/5c21da8ec79cace90b66d3749acc6cbef06f3594.png@1256w_892h_!web-article-pic.webp)
 
 Here are several options to choose from. If only a few ports need to be forwarded, use the first rule. For example, in the case of Minecraft Bedrock Edition, it uses UDP protocol on port 19132, so mapping this port is sufficient. You can search for your current public IP address on Baidu. Actually, dynamic IPs don't change too frequently.
 
