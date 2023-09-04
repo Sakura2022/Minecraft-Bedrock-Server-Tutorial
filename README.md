@@ -46,10 +46,10 @@ OS: Ubuntu Server 22.04.2 LTS
 3. Connect to the server through SSH. Check the user name according to the server background, usually ubuntu.
 4. Wait for the connection to be successful and the preparations are complete. (The picture below is the LAN connection to my virtual machine, for demonstration purposes)
 5. Get administrator privileges.
-  '''
+  ```
   sudo passwd root
   su root
-  '''
+  ```
 
 
 
