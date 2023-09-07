@@ -1,4 +1,4 @@
-# Minecraft Bedrock Server Tutorial
+# Exploring Minecraft Bedrock Server: A Comprehensive Tutorial
 Minecraft Bedrock Edition server setup (Ubuntu Server)
 
 My orignal article was published on BiliBili. Link: https://www.bilibili.com/read/cv25659542
